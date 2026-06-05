@@ -1,0 +1,17 @@
+<h1>Conversas</h1>
+
+<a href="{% url 'novo_chat' %}">
+    Nova conversa
+</a>
+
+<hr>
+
+{% for chat in chats %}
+    <p>
+        <a href="{% url 'chat_detail' chat.id %}">
+            {{ chat.titulo }}
+        </a>
+    </p>
+{% empty %}
+    <p>Nenhuma conversa encontrada.</p>
+{% endfor %}

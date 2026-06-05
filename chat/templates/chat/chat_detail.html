@@ -1,0 +1,43 @@
+<h1>{{ chat.titulo }}</h1>
+
+<hr>
+
+{% for mensagem in mensagens %}
+
+    <div>
+
+        {% if mensagem.role == "user" %}
+            <strong>Você:</strong>
+        {% else %}
+            <strong>CartAI:</strong>
+        {% endif %}
+
+        <p>{{ mensagem.content }}</p>
+
+    </div>
+
+    <hr>
+
+{% empty %}
+
+    <p>Nenhuma mensagem ainda.</p>
+
+{% endfor %}
+
+<form method="post"
+      action="{% url 'enviar_mensagem' chat.id %}">
+
+    {% csrf_token %}
+
+    <input
+        type="text"
+        name="pergunta"
+        placeholder="Digite sua mensagem"
+        required
+    >
+
+    <button type="submit">
+        Enviar
+    </button>
+
+</form>
