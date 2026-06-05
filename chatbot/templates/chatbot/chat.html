@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Assistente Cartório</title>
+</head>
+<body>
+
+    <h1>Assistente do Cartório</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <textarea
+            name="pergunta"
+            rows="5"
+            cols="60"
+            placeholder="Digite sua pergunta..."
+        ></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Enviar
+        </button>
+    </form>
+
+    {% if resposta %}
+        <hr>
+
+        <h2>Resposta</h2>
+
+        <p>{{ resposta }}</p>
+    {% endif %}
+
+</body>
+</html>
